@@ -38,6 +38,16 @@ export const updateProfilePhoto = (photo) => ({
     photo
 })
 
+export const newProfilePhoto = () => async (dispatch) => {
+    let response = await usersAPI.getAuthMe();
+    if (response.resultCode === 0) {
+        let id = response.data.id;
+        response = await usersAPI.getUser(id);
+        let photo = response.photos.small;
+        dispatch(updateProfilePhoto(photo));
+    }
+}
+
 export const authUserData = () => async (dispatch) => {
     let response = await usersAPI.getAuthMe();
     if (response.resultCode === 0) {

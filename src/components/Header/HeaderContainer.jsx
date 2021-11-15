@@ -1,15 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { logout, updateProfilePhoto } from '../../redux/authReducer';
+import { logout, newProfilePhoto } from '../../redux/authReducer';
 import Header from './Header';
 
 class HeaderContainer extends React.Component {
-    componentDidUpdate(prevProps, prevState) {
-        if (this.props.profile !== null) {
-            if (this.props.profile.photos.small !== prevProps.auth.photoUser)
-                this.props.updateProfilePhoto(this.props.profile.photos.small);
-        }
-    }
     render() {
         return (
             <Header {...this.props} />
@@ -19,8 +13,7 @@ class HeaderContainer extends React.Component {
 
 let mapStateToProps = (state) => ({
     auth: state.auth,
-    isAuth: state.auth.isAuth,
-    profile: state.profilePage.profile
+    isAuth: state.auth.isAuth
 })
 
-export default connect(mapStateToProps, { logout, updateProfilePhoto })(HeaderContainer);
+export default connect(mapStateToProps, { logout, newProfilePhoto })(HeaderContainer);
