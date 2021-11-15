@@ -1,0 +1,100 @@
+.dialogs{
+  display: grid;
+  grid-template-areas:
+  "d m";
+  grid-template-columns: 250px 550px;
+}
+.dialogItems{
+  grid-area: d;
+  background-color: #302c4d;
+  overflow: auto;
+  padding: 10px;
+  font-size: 1.1em;
+  height: 600px;
+  width: 225px;
+}
+.openDialogArea {
+  border-radius: 25px 0px 0px 25px;
+}
+.closedDialogArea {
+  border-radius: 25px;
+}
+.messagesArea {
+  grid-area: m;
+  border-radius: 0px 25px 25px 0px;
+  position: relative;
+}
+.panelUser {
+  display: flex;
+  height: 55px;
+  align-items: center;
+  padding: 5px;
+  border-radius: 0px 25px 0px 0px;
+  background-color: #302c4d;
+}
+.iconExit {
+  display: flex;
+  align-items: center;
+  margin: 5px;
+  padding: 10px;
+  border-radius: 10px;
+}
+.iconExit:hover {
+  background-color: steelblue;
+}
+.iconExit img {
+  width: 25px;
+  height: 25px;
+}
+.PhotoUser {
+  margin-left: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+}
+.UserName {
+  margin-left: 10px;
+  color: white;
+  font-size: 1.4em;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.options{
+  margin-left: auto;
+  padding: 10px;
+  margin-right: 15px;
+  color: white;
+  font-size: 2em;
+  border-radius: 5px;
+}
+.point {
+  margin: 2.5px;
+  width: 5px;
+  height: 5px;
+  border-radius: 100%;
+  background-color: white;
+}
+.options:hover{
+  background-color:darkorchid;
+}
+.messages{
+  grid-area: m;
+  position: relative;
+  background-color: white;
+  overflow: auto;
+  scroll-margin-bottom: 0;
+  width: 10fr;
+  height: 505px;
+}
+.addMessage {
+  position: relative;
+  height: 40px;
+  padding: 5px;
+  border-radius: 0px 0px 25px 0px;
+  width: 10fr;
+  background-color: #302c4d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

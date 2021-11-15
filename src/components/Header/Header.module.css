@@ -1,0 +1,65 @@
+.header {
+  grid-area: h;
+  display: flex;
+  align-items: center;
+  background-color: #302c4d;
+  border-radius: 0 0 25px 25px;
+}
+.logo {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+}
+.loginBlock {
+  color: white;
+  font-size: 1.2em;
+  position: relative;
+  margin-left: auto;
+  margin-right: 25px;
+}
+.loginBlock a {
+  color: white;
+}
+.area {
+  display: flex;
+  align-items: center;
+}
+.userBlock {
+  position: relative;
+  height: 50px;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+.userBlock:hover {
+  background-color:darkorchid;
+}
+.userName {
+  color: white;
+}
+.userPhoto {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  width: 50px;
+  height: 50px;
+}
+.vertLIne {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  color: white;
+  margin: -0.5px;
+  z-index: 1;
+}
+.logoutBlock {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+.logoutBlock:hover {
+  background-color:darkorchid;
+}

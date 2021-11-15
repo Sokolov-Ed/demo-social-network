@@ -1,0 +1,39 @@
+.dialog{
+    font-size: 1.2em;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+a{
+    color: white;
+    text-decoration: none;
+}
+.dialog:hover{
+    width: 235px;
+    margin-left: -2.5px;
+    padding-left: 2.5px;
+    border-radius: 25px 0px 0px 25px;
+    color: white;
+    background-color:mediumorchid;
+}
+a.activeLink .dialog{
+    width: 235px;
+    margin-left: -2.5px;
+    padding-left: 2.5px;
+    border-radius: 25px 0px 0px 25px;
+    color: black;
+    background-color: white;
+}
+.avaDialogs{
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    margin-right: 5px;
+}
+.UserName {
+    width: 175px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

@@ -1,0 +1,13 @@
+.content {
+    padding: 5px;
+    color: #f5f5dc;
+    cursor: default;
+}
+.selected{
+    color: gold;
+    font-weight: bold;
+}
+.pageNumber {
+    padding: 2px;
+    border: 1px solid grey;
+}

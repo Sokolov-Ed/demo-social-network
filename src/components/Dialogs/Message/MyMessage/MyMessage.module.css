@@ -1,0 +1,29 @@
+.itemMyMessage{
+    display: flex;
+    align-items: end;
+    justify-content: right;
+    font-size: 1.1em;
+}
+.borderMyMessage{
+    margin: 5px 0px 5px 5px;
+    padding: 10px;
+    border-radius: 10px 10px 0px 10px;
+    background-color: #302c4d;
+    color: white;
+    word-break: break-word;
+    word-wrap: break-word;
+}
+.Arrow {
+    width: 0; 
+    height: 0;
+    border-bottom: 10px solid #302c4d;
+    border-right: 5px solid transparent;
+    margin-bottom: 5px;
+    margin-right: 5px;
+}
+.myAva{
+    margin: 5px;
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+}
