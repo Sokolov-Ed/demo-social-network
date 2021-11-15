@@ -11,10 +11,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { initializeApp } from './redux/AppReducer';
-import Preloader from './components/Common/Preloader/Preloader';
 import store from './redux/reduxStore';
 import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import { WithSuspense } from './components/HOC/WithSuspense';
 
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
@@ -26,9 +25,6 @@ class App extends React.Component {
   }
 
   render() {
-    if (!this.props.initialized) {
-      return <Preloader />
-    }
     return (
       <div className='app-wrapper'>
         <HeaderContainer />
@@ -58,10 +54,10 @@ const AppContainer = compose(
 
 export const MainApp = (props) => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Provider store={store}>
         <AppContainer />
       </Provider>
-    </BrowserRouter>
+    </HashRouter>
   )
 }

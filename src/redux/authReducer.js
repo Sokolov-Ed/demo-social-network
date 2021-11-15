@@ -2,6 +2,7 @@ import { stopSubmit, reset } from "redux-form";
 import { authMe, usersAPI } from "../api/api";
 
 const SET_USER_DATA = 'samurai-network/auth/SET_USER_DATA';
+const UPDATE_PROFILE_PHOTO = 'UPDATE_PROFILE_PHOTO';
 
 let initialState = {
     userId: null,
@@ -18,6 +19,11 @@ const authReducer = (state = initialState, action) => {
                 ...state,
                 ...action.payload
             }
+        case UPDATE_PROFILE_PHOTO:
+            return {
+                ...state,
+                photoUser: action.photo
+            }
         default:
             return state;
     }
@@ -26,6 +32,10 @@ const authReducer = (state = initialState, action) => {
 export const setAuthUserData = (userId, email, login, photoUser = null, isAuth) => ({
     type: SET_USER_DATA,
     payload: { userId, email, login, photoUser, isAuth }
+})
+export const updateProfilePhoto = (photo) => ({
+    type: UPDATE_PROFILE_PHOTO,
+    photo
 })
 
 export const authUserData = () => async (dispatch) => {
