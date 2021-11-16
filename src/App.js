@@ -15,6 +15,7 @@ import store from './redux/reduxStore';
 import { Provider } from 'react-redux';
 import { HashRouter } from 'react-router-dom';
 import { WithSuspense } from './components/HOC/WithSuspense';
+import Preloader from './components/Common/Preloader/Preloader';
 
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
 const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
@@ -25,6 +26,9 @@ class App extends React.Component {
   }
 
   render() {
+    if (!this.props.initialized) {
+      return <Preloader />
+    }
     return (
       <div className='app-wrapper'>
         <HeaderContainer />

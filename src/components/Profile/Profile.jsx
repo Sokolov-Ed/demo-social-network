@@ -6,7 +6,8 @@ const Profile = (props) => {
         <div className="mainContent">
             <ProfileInfo profile={props.profile} className={classes.classForProfileInfo}
                 status={props.status} updateStatus={props.updateStatus} 
-                isOwner={props.isOwner} savePhoto={props.savePhoto}/>
+                isOwner={props.isOwner} savePhoto={props.savePhoto}
+                saveProfile={props.saveProfile}/>
             <MyPostsContainer/>
         </div>
     )

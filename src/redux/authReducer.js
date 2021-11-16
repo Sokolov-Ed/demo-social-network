@@ -1,8 +1,9 @@
 import { stopSubmit, reset } from "redux-form";
-import { authMe, usersAPI } from "../api/api";
+import { authMe, usersAPI, securityAPI } from "../api/api";
 
 const SET_USER_DATA = 'samurai-network/auth/SET_USER_DATA';
 const UPDATE_PROFILE_PHOTO = 'UPDATE_PROFILE_PHOTO';
+const SET_CAPTCHA_URL = 'SET_CAPTCHA_URL';
 
 let initialState = {
     userId: null,
@@ -10,7 +11,8 @@ let initialState = {
     login: null,
     photoUser: null,
     isAuth: false,
-    isFetching: false
+    isFetching: false,
+    captchaUrl: null
 }
 const authReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -24,28 +26,31 @@ const authReducer = (state = initialState, action) => {
                 ...state,
                 photoUser: action.photo
             }
+        case SET_CAPTCHA_URL:
+            return {
+                ...state,
+                captchaUrl: action.captchaUrl
+            }
         default:
             return state;
     }
 }
 
-export const setAuthUserData = (userId, email, login, photoUser = null, isAuth) => ({
+export const setAuthUserData = (userId, email, login, photoUser = null, isAuth, captchaUrl = null) => ({
     type: SET_USER_DATA,
-    payload: { userId, email, login, photoUser, isAuth }
+    payload: { userId, email, login, photoUser, isAuth, captchaUrl }
 })
 export const updateProfilePhoto = (photo) => ({
     type: UPDATE_PROFILE_PHOTO,
     photo
 })
+export const setCaptchaUrl = (captchaUrl) => ({
+    type: SET_CAPTCHA_URL,
+    captchaUrl
+})
 
-export const newProfilePhoto = () => async (dispatch) => {
-    let response = await usersAPI.getAuthMe();
-    if (response.resultCode === 0) {
-        let id = response.data.id;
-        response = await usersAPI.getUser(id);
-        let photo = response.photos.small;
-        dispatch(updateProfilePhoto(photo));
-    }
+export const newProfilePhoto = (photo) => async (dispatch) => {
+    dispatch(updateProfilePhoto(photo));
 }
 
 export const authUserData = () => async (dispatch) => {
@@ -66,9 +71,18 @@ export const login = (email, password, rememberMe, captcha, formName) => async (
         dispatch(reset(formName));
     }
     else {
+        if(response.data.resultCode === 10) {
+            dispatch(getCaptchaUrl());
+        }
         let message = response.data.messages.length > 0 ? response.data.messages[0] : "Some error";
         dispatch(stopSubmit("login", { _error: message }));
     }
+}
+
+export const getCaptchaUrl = () => async (dispatch) => {
+    const response = await securityAPI.getCaptchaURL();
+    const captchaUrl = response.data.url;
+    dispatch(setCaptchaUrl(captchaUrl));
 }
 
 export const logout = () => async (dispatch) => {
