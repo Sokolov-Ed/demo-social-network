@@ -2,16 +2,18 @@
     grid-area: n;
     background-color: #302c4d;
     padding:20px;
-    height: 175px;
-    border-radius: 25px 0 25px 25px;
+    height: 210px;
+    width: 200px;
+    border-radius: 0px 25px 25px 0px;
     font-size: 1.2em;
     text-align: center;
 }
 .item a{
     color: white;
+    font-size: 1.3em;
     text-decoration: none;
 }
 .item a.activeLink{
     color: gold;
-    font-size: 1.3em;
+    font-size: 1.5em;
 }

@@ -15,29 +15,29 @@ const Dialogs = (props) => {
             </div>
             {currentDialogElement.id &&
                 <div className={classes.messagesArea}>
-                <div className={classes.panelUser}>
-                    <div onClick={props.closeCurrentDialog} className={classes.iconExit}>
-                        <img src={iconExit} />
+                    <div className={classes.panelUser}>
+                        <div onClick={props.closeCurrentDialog} className={classes.iconExit}>
+                            <img src={iconExit} />
+                        </div>
+                        <img src={currentDialogElement.src} className={classes.PhotoUser}/>
+                        <div className={classes.UserName}>
+                            {currentDialogElement.name}
+                        </div>
+                        <div className={classes.options}>
+                            <div className={classes.point}/>
+                            <div className={classes.point}/>
+                            <div className={classes.point}/>
+                        </div>
                     </div>
-                    <img src={currentDialogElement.src} className={classes.PhotoUser}/>
-                    <div className={classes.UserName}>
-                        {currentDialogElement.name}
+                    <div className={classes.messages}>
+                        <ScrollableFeed forceScroll={true}>
+                            <Message messages={props.state.messages} />
+                        </ScrollableFeed>
                     </div>
-                    <div className={classes.options}>
-                        <div className={classes.point}/>
-                        <div className={classes.point}/>
-                        <div className={classes.point}/>
+                    <div className={classes.addMessage}>
+                        <AddMessageContainer />
                     </div>
                 </div>
-                <div className={classes.messages}>
-                    <ScrollableFeed forceScroll={true}>
-                        <Message messages={props.state.messages} />
-                    </ScrollableFeed>
-                </div>
-                <div className={classes.addMessage}>
-                    <AddMessageContainer />
-                </div>
-            </div>
             }
         </div>
     )

@@ -1,24 +1,22 @@
-html {
-  background-color:ghostwhite;
-}
 .app-wrapper{
   margin: 0 auto;
+  width: 100%;
   display: grid;
-  width: 1000px;
   grid-template-areas: 
-  "h h"
-  "n c";
-  grid-template-rows: 60px auto;
-  grid-template-columns: 200px 800px;
+  "h h h"
+  "n c c";
+  grid-template-rows: 70px auto;
   grid-gap: 10px;
 }
 .app-wrapper-content{
   grid-area: c;
+  width: 800px;
+  justify-self: start;
 }
 .mainContent {
   min-height: 205px;
   background-color: #302c4d;
-  border-radius: 0 25px 25px 25px;
+  border-radius: 0px 0px 25px 25px;
   padding: 5px;
 }
 ::-webkit-scrollbar {

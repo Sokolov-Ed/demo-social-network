@@ -33,7 +33,7 @@ class App extends React.Component {
     return (
       <div className='app-wrapper'>
         <HeaderContainer />
-        <Nav />
+        {this.props.isAuth && <Nav />}
         <div className='app-wrapper-content'>
           <Switch>
             <Redirect exact from="/" to="/profile" />
@@ -53,7 +53,8 @@ class App extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  initialized: state.appR.initialized
+  initialized: state.appR.initialized,
+  isAuth: state.auth.isAuth
 })
 
 const AppContainer = compose(
