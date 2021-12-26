@@ -59,7 +59,7 @@ export const authUserData = () => async (dispatch) => {
         let { id, email, login } = response.data;
         dispatch(setAuthUserData(id, email, login, null, true));
         response = await usersAPI.getUser(id);
-        let photo = response.photos.small;
+        let photo = response.photos.large;
         dispatch(setAuthUserData(id, email, login, photo, true));
     }
 }

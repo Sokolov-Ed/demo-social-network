@@ -1,12 +1,20 @@
 .nav{
-    grid-area: n;
+    position: absolute;
+    top: 80px;
+    left: -170px;
     background-color: #302c4d;
     padding:20px;
     height: 210px;
-    width: 200px;
+    width: 175px;
     border-radius: 0px 25px 25px 0px;
     font-size: 1.2em;
     text-align: center;
+    transition: .5s;
+    z-index: 1;
+}
+.nav:hover {
+    left: 0;
+    transition: .5s;
 }
 .item a{
     color: white;

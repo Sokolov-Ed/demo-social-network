@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import classes from './ProfileInfo.module.css';
 import DefaultIcon from './../../../icons/default_icon_user.png';
 import Preloader from '../../Common/Preloader/Preloader';
@@ -31,18 +31,20 @@ const ProfileInfo = ({ profile, status, updateStatus, isOwner, savePhoto, savePr
         return (
             <div className={classes.profileInfo}>
                 <div className={classes.descriptionBlock}>
-                    <img src={profile.photos.small != null ? profile.photos.small : DefaultIcon} className={classes.photoUser} />
-                    <div className={classes.userName}>{profile.fullName}</div>
-                    {isOwner && <input type={"file"} onChange={onMainPhotoSelected} />}
+                    <img src={profile.photos.large != null ? profile.photos.large : DefaultIcon} className={classes.photoUser} />
+                    <div>
+                        <div className={classes.userName}>{profile.fullName}</div>
+                        <ProfileStatusWithHooks status={status} updateStatus={updateStatus} />
+                    </div>
                 </div>
+                {isOwner && <input type={"file"} onChange={onMainPhotoSelected} />}
                 <div className={classes.aboutUser}>
-                    <ProfileStatusWithHooks status={status} updateStatus={updateStatus} />
-                    {editMode 
+                    {editMode
                         ? <ProfileDataForm profile={profile} exitOfEditMode={exitOfEditMode}
-                                saveProfile={saveProfile} editMode={editMode}
-                                initialValues={profile}/> 
-                        : <ProfileData profile={profile} isOwner={isOwner} 
-                                goToEditMode={goToEditMode} editMode={editMode}/>}
+                            saveProfile={saveProfile} editMode={editMode}
+                            initialValues={profile} />
+                        : <ProfileData profile={profile} isOwner={isOwner}
+                            goToEditMode={goToEditMode} editMode={editMode} />}
                 </div>
             </div>
         )

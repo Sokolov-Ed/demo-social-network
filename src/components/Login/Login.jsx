@@ -6,39 +6,43 @@ import { required } from "../../Utils/Validators/Validator";
 import { login } from "../../redux/authReducer";
 import { connect } from "react-redux";
 import { Redirect } from "react-router";
-import stylesError from "./../Common/FormsControls/FormsControls.module.css"
-import { useEffect } from "react";
+import stylesError from "./../Common/FormsControls/FormsControls.module.css";
 
 const LoginForm = ({ handleSubmit, error, captchaUrl }) => {
     return (
         <form onSubmit={handleSubmit}>
-            <div>
-                <Field placeholder="email" name="email" component={Input}
-                    validate={[required]} />
-            </div>
-            <div>
-                <Field placeholder="Password" name="password" component={Input}
-                    validate={[required]} type="password" />
-            </div>
-            <div>
-                <Field component={Input} name="rememberMe" type="checkbox" /> remember me
+            <div className={classes.authorization}>
+                <div className={classes.loginField}>
+                    <div>
+                        <Field name="email" component={Input} placeholder="email"
+                            validate={[required]} className={classes.formInput} />
+                    </div>
+                    <div>
+                        <Field name="password" component={Input} placeholder="password"
+                            validate={[required]} type="password" className={classes.formInput} />
+                    </div>
+                    <div className={classes.checkboxField}>
+                        <Field component={Input} name="rememberMe" type="checkbox" />
+                        <span>remember me</span>
+                    </div>
+                </div>
+                <div className={classes.captchaField}>
+                    {captchaUrl &&
+                        <div>
+                            <div className={classes.imgCaptcha}>
+                                <img src={captchaUrl} />
+                            </div>
+                            <div>
+                                <Field placeholder="Symbols from image" component={Input}
+                                    name="captcha" validate={[required]} className={classes.formInput}/>
+                            </div>
+                        </div>}
+                </div>
             </div>
             {error && <div className={stylesError.formSummaryError}>
                 {error}
             </div>}
-            <div>
-                {captchaUrl &&
-                    <div>
-                        <div className={classes.imgCaptcha}>
-                            <img src={captchaUrl} />
-                        </div>
-                        <div>
-                            <Field placeholder="Symbols from image" component={Input}
-                                name="captcha" validate={[required]}/>
-                        </div>
-                    </div>}
-            </div>
-            <div>
+            <div className={classes.submit}>
                 <button>Log In</button>
             </div>
         </form>
@@ -58,8 +62,10 @@ const Login = (props) => {
         return <Redirect to={"/profile"} />
     }
     return (
-        <div className={classes.loginText}>
-            <h1>Login</h1>
+        <div className={classes.loginForm}>
+            <div className={classes.title}>
+                <h1>Login</h1>
+            </div>
             <LoginReduxForm onSubmit={onSubmit} captchaUrl={props.captchaUrl} />
         </div>
     )

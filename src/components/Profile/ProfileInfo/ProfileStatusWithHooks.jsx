@@ -19,11 +19,13 @@ const ProfileStatusWithHooks = (props) => {
         props.updateStatus(status);
     }
     return (
-        <div>
+        <div className={classes.statusForm}>
             Status
             {!editMode
                 ? <div>
-                    <div className={classes.fieldStatus} onDoubleClick={activatedEditMode} >{props.status}</div>
+                    <div className={classes.fieldStatus} onDoubleClick={activatedEditMode} >
+                        {props.status}
+                    </div>
                 </div>
                 : <div>
                     <input onChange={onStatusChange} autoFocus={true} value={status} onBlur={deactivatedEditMode} />

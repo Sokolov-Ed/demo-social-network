@@ -1,9 +1,78 @@
-.loginText {
-    background-color: #302c4d;
+.loginForm {
+    width: 500px;
+    margin-top: 50px;
+    border-radius: 10px;
+    background-color:#fff;
     padding: 10px;
-    color: white;
+    color: #353535;
+    box-shadow: 0px 5px 10px 2px #3535352c;
+}
+.title {
+    display:flex;
+    justify-content: center;
+}
+.authorization {
+    width: 100%;
+    display: grid;
+    grid-template-areas: 
+    "log cap";
+    grid-template-columns: 250px;
+}
+.loginField {
+    grid-area: log;
+    justify-self: center;
+}
+.captchaField {
+    grid-area: cap;
+    justify-self: center;
+}
+.checkboxField {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.checkboxField span {
+    transform: translateY(-2.5px);
+}
+.formInput {
+    margin: 10px 0;
+    width: 200px;
+    padding: 10px 5px;
+    font-size: 16px;
+    border: none;
+    border-bottom: 1px solid #353535;
+    outline: none;
+    background: transparent;
+}
+.formInput::placeholder {
+    position: absolute;
+    top:0;
+    left: 5px;
+    padding: 10px 0;
+    font-size: 16px;
+    pointer-events: none;
+    transition: .5s;
+    background: transparent;
 }
 .imgCaptcha img {
     width: 200px;
     height: 50px
+}
+.submit {
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+}
+.submit button {
+    background-color: #353535;
+    color: #fff;
+    font-size: 16px;
+    width: 170px;
+    height: 40px;
+    border: none;
+    border-radius: 7.5px;
+}
+.submit button:hover {
+    background-color: #505050;
 }
