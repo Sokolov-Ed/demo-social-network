@@ -3,4 +3,9 @@
 }
 .posts{
     margin-top: 10px;
+    width: 800px;
+    display: grid;
+    grid-template-areas: 
+    "post post";
+    grid-template-columns: 375px;
 }

@@ -1,3 +1,39 @@
-.item img{
+.item {
+  width: 375px;
+  justify-self:center;
+  height: max-content;
+  background-color:white;
+  box-shadow: inset 0px 1px 1px 2px ghostwhite;
+  border-radius: 15px;
+  margin: 5px 2.5px;
+}
+.authorField {
+  background-color: ghostwhite;
+  color: #000;
+  border-radius: 15px 15px 0 0;
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.postAuthor {
+  transform: translateY(-2.5px);
+  margin: 10px;
+}
+.photoUser img{
   width: 50px;
+  height: 50px;
+}
+.postMessage, .postLike {
+  padding: 10px;
+}
+.postMessage {
+  white-space: pre-line;
+  word-break: break-word;
+  word-wrap: break-word;
+}
+.postLike {
+  width: 50px;
+  border-radius: 0 15px;
+  background-color: ghostwhite;
 }

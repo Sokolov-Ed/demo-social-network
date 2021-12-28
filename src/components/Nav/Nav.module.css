@@ -1,27 +1,41 @@
 .nav{
     position: absolute;
+    padding: 20px;
     top: 80px;
-    left: -170px;
-    background-color: #302c4d;
-    padding:20px;
+    left: -210px;
+    background-color:#fff;
+    box-shadow: 0px 5px 10px 2px #3535352c;
     height: 210px;
-    width: 175px;
+    width: 200px;
     border-radius: 0px 25px 25px 0px;
     font-size: 1.2em;
-    text-align: center;
     transition: .5s;
     z-index: 1;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
 }
 .nav:hover {
     left: 0;
     transition: .5s;
 }
-.item a{
-    color: white;
-    font-size: 1.3em;
-    text-decoration: none;
+.nav a {
+    margin: 2.5px 0;
+    width: 165px;
 }
-.item a.activeLink{
-    color: gold;
-    font-size: 1.5em;
+.item:hover {
+    background-color: #3535352c;
+    transition: .5s;
+}
+.item {
+    padding: 5px;
+    width: 165px;
+    color: #353535;
+    border-radius: 10px;
+}
+a.activeLink .item {
+    background-color: #353535;
+    border: none;
+    color: #fff;
 }
