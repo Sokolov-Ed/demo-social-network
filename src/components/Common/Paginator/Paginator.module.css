@@ -4,10 +4,63 @@
     cursor: default;
 }
 .selected{
-    color: gold;
-    font-weight: bold;
+    user-select: none;
 }
 .pageNumber {
     padding: 2px;
     border: 1px solid grey;
+}
+.pageItem, .previousPageItem, .nextPageItem, .breakPageLink {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    box-shadow: inset 0px 1px 1px #b9b9b9;
+    color: #353535;
+    user-select: none;
+}
+.previousPageItem {
+    border-radius: 20px 0 0 20px;
+}
+.nextPageItem {
+    border-radius: 0 20px 20px 0;
+}
+.pageItem:hover, .previousPageItem:hover, .nextPageItem:hover, .breakPageLink:hover {
+    background-color: #959595;
+    color: #fff;
+    transition: .5s;
+}
+.pageLink, .previousPageLink, .nextPageLink {
+    position: relative;
+    padding: 100%;
+    color: #353535;
+}
+.previousPageLink, .nextPageLink {
+    transform: translateY(-1px);
+    font-size: 22px;
+    font-weight: bold;
+}
+.pageItem:hover .pageLink, .previousPageItem:hover .previousPageLink, .nextPageItem:hover .nextPageLink {
+    color: #fff;
+    transition: .5s;
+}
+.pagination {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+.active {
+    background-color: #353535;
+    box-shadow: inset 0px 1px 1px #353535;
+}
+.active .pageLink {
+    color: #fff;
+}
+.disabled {
+    pointer-events: none;
+    opacity: .5;
 }

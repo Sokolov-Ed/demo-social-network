@@ -1,23 +1,20 @@
 .header {
+  position: fixed;
   grid-area: h;
   width: 100%;
   display: flex;
   align-items: center;
   background-color: #353535;
   user-select: none;
-}
-.logo {
-  position: absolute;
-  margin-left: 10px;
-  width: 50px;
-  height: 50px;
+  box-shadow: 0px 5px 10px 2px #3535355b;
+  z-index: 3;
 }
 .loginBlock {
   color: white;
   font-size: 1.2em;
   position: relative;
   margin-left: auto;
-  margin-right: 40px;
+  margin-right: 100px;
 }
 a {
   color: white;
@@ -27,7 +24,7 @@ a {
   display: flex;
   align-items: center;
 }
-.userBlock {
+.userBlock, .titlePage {
   position: relative;
   height: 60px;
   padding: 5px 10px;
@@ -35,12 +32,11 @@ a {
   align-items: center;
   flex-direction: row;
 }
-.userBlock:hover {
-  background-color:#505050;
-  -webkit-transition: background-color 0.5s ease;
-  -moz-transition: background-color 0.5s ease;
-  -o-transition: background-color 0.5s ease;
-  transition: background-color 0.5s ease;
+.titlePage {
+  font-size: 28px;
+  transform: translateY(-2.5px);
+  color: #fff;
+  margin-left: 50px;
 }
 .userName {
   color: white;
@@ -67,10 +63,7 @@ a {
   padding: 5px 10px;
   cursor: pointer;
 }
-.logoutBlock:hover {
+.logoutBlock:hover, .userBlock:hover {
   background-color:#505050;
-  -webkit-transition: background-color 0.5s ease;
-  -moz-transition: background-color 0.5s ease;
-  -o-transition: background-color 0.5s ease;
-  transition: background-color 0.5s ease;
+  transition: background-color 0.5s;
 }

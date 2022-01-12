@@ -33,10 +33,10 @@
     justify-content: center;
 }
 .checkboxField span {
-    transform: translateY(-2.5px);
+    margin-left: 5px;
 }
 .formInput {
-    margin: 10px 0;
+    margin-bottom: 10px;
     width: 200px;
     padding: 10px 5px;
     font-size: 16px;

@@ -7,16 +7,14 @@ const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT';
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
 const TOGGLE_IS_FOLLOWING = 'TOGGLE_IS_FOLLOWING';
-const SET_CURRENT_PORTION = 'SET_CURRENT_PORTION';
 
 let initialState = {
     users: [],
-    pageSize: 10,
+    pageSize: 50,
     totalUsersCount: 0,
     currentPage: 1,
     isFetching: false,
     followingInProcess: [],
-    currentPortion: 1
 }
 const usersReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -29,11 +27,6 @@ const usersReducer = (state = initialState, action) => {
             return {
                 ...state,
                 users: [...action.users]
-            }
-        case SET_CURRENT_PORTION:
-            return {
-                ...state,
-                currentPortion: action.portionNumber
             }
         case SET_CURRENT_PAGE:
             return {
@@ -55,7 +48,7 @@ const usersReducer = (state = initialState, action) => {
                 ...state,
                 followingInProcess: action.isFetching
                     ? [...state.followingInProcess, action.userId]
-                    : state.followingInProcess.filter(id => id != action.userId)
+                    : state.followingInProcess.filter(id => id !== action.userId)
             }
         default:
             return state;
@@ -65,10 +58,6 @@ const usersReducer = (state = initialState, action) => {
 export const setUsers = (users) => ({
     type: SET_USERS,
     users
-})
-export const setCurrentPortion = (portionNumber) => ({
-    type: SET_CURRENT_PORTION,
-    portionNumber
 })
 export const setCurrentPage = (currentPage) => ({
     type: SET_CURRENT_PAGE,
@@ -93,7 +82,7 @@ export const followOrUnfollowSuccess = (userID, boolValue) => ({
     boolValue
 })
 
-export const getUsers = (currentPage, pageSize) => async (dispatch) => {
+export const getUsers = (currentPage = 1, pageSize = 10) => async (dispatch) => {
     dispatch(setCurrentPage(currentPage));
     dispatch(toggleIsFetching(true));
     let response = await usersAPI.getUsers(currentPage, pageSize);
@@ -109,7 +98,7 @@ export const followOrUnfollow = (userId, boolValue) => async (dispatch) => {
         response = await usersAPI.getFollow(userId);
     else
         response = await usersAPI.getUnfollow(userId);
-    if (response.resultCode == 0)
+    if (response.resultCode === 0)
         dispatch(followOrUnfollowSuccess(userId, boolValue));
     dispatch(toggleISFollowing(false, userId));
 }

@@ -1,8 +1,10 @@
 import classes from './Music.module.css';
 const Music = (props) => {
-    return(
+    return (
         <div className="mainContent">
-            Music
+            <div className='pageIsEmpty'>
+                <div>In developing</div>
+            </div>
         </div>
     )
 }

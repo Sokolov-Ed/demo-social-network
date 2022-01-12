@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import classes from './Nav.module.css';
+
 const Nav = (props) => {
     return (
         <nav className={classes.nav}>
@@ -11,6 +12,11 @@ const Nav = (props) => {
             <NavLink to='/dialogs' activeClassName={classes.activeLink}>
                 <div className={classes.item}>
                     Messages
+                </div>
+            </NavLink>
+            <NavLink to='/users' activeClassName={classes.activeLink}>
+                <div className={classes.item}>
+                    Users
                 </div>
             </NavLink>
             <NavLink to='/news' activeClassName={classes.activeLink}>
@@ -28,12 +34,8 @@ const Nav = (props) => {
                     Settings
                 </div>
             </NavLink>
-            <NavLink to='/users' activeClassName={classes.activeLink}>
-                <div className={classes.item}>
-                    Users
-                </div>
-            </NavLink>
         </nav>
     )
 }
+
 export default Nav;

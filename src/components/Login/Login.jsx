@@ -22,8 +22,11 @@ const LoginForm = ({ handleSubmit, error, captchaUrl }) => {
                             validate={[required]} type="password" className={classes.formInput} />
                     </div>
                     <div className={classes.checkboxField}>
-                        <Field component={Input} name="rememberMe" type="checkbox" />
-                        <span>remember me</span>
+                        <label className="checkbox">
+                            <Field name="rememberMe" component="input" type="checkbox"/>
+                            <div className="checkboxCheck"></div>
+                            <span>Remember me</span>
+                        </label>
                     </div>
                 </div>
                 <div className={classes.captchaField}>
@@ -59,7 +62,7 @@ const Login = (props) => {
             formData.captcha, "login");
     }
     if (props.isAuth) {
-        return <Redirect to={"/profile"} />
+        return <Redirect to='/profile/' />
     }
     return (
         <div className={classes.loginForm}>

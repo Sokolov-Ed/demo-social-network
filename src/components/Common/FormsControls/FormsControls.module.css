@@ -1,16 +1,17 @@
-.formControl.error input,
-.formControl.error textarea {
-    border: 1px solid red;
-    transition: .5s;
+.formControl.error input, .formControl.error textarea {
+    box-shadow: inset 0px 1px 1px 2px red;
+    border: none;
+    transition: .25s;
     border-radius: 5px;
 }
 .formControl.error span{
     position: absolute;
+    margin-top: -30px;
     background-color: red;
-    padding: 5px;
+    padding: 5px 10px;
     border-radius: 5px;
     color: white;
-    margin-top: -75px;
+    z-index: 3;
 }
 .formSummaryError{
     margin: 10px 50px;
@@ -20,4 +21,16 @@
     padding: 5px;
     color: white;
     background-color: red;
+}
+.inputPhoto input[type="file"] {
+    display: none;
+}
+.inputPhoto img{
+    margin: 5px;
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+}
+.inputPhoto img:hover {
+    background-color: ghostwhite;
 }

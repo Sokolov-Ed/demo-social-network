@@ -17,6 +17,7 @@ import { HashRouter, Switch } from 'react-router-dom';
 import { WithSuspense } from './components/HOC/WithSuspense';
 import Preloader from './components/Common/Preloader/Preloader';
 import { Redirect } from "react-router";
+import { getCurrentPage } from './redux/usersCelectors';
 
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
 const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
@@ -25,7 +26,7 @@ class App extends React.Component {
   componentDidMount() {
     this.props.initializeApp();
   }
-
+  
   render() {
     if (!this.props.initialized) {
       return <Preloader />
@@ -36,13 +37,16 @@ class App extends React.Component {
         {this.props.isAuth && <Nav />}
         <div className='app-wrapper-content'>
           <Switch>
-            <Redirect exact from="/" to="/profile" />
+            <Redirect exact from='/profile' to={`/profile/${this.props.userId}`} />
+            <Redirect exact from='/users' to={`/users/page=${this.props.currentPage}`} />
+            {this.props.dialogId && <Redirect exact from='/dialogs' to={`/dialogs/${this.props.dialogId}`} />}
+            <Redirect exact from='/' to={`/profile/${this.props.userId}`} />
             <Route path='/profile/:userID?' render={WithSuspense(ProfileContainer)} />
-            <Route path='/dialogs' render={WithSuspense(DialogsContainer)} />
+            <Route path='/dialogs/:dialogId?' render={WithSuspense(DialogsContainer)} />
             <Route path='/news' render={() => <News />} />
             <Route path='/music' render={() => <Music />} />
             <Route path='/settings' render={() => <Settings />} />
-            <Route path='/users' render={() => <UsersContainer />} />
+            <Route path='/users/page=:currentPage?' render={() => <UsersContainer />} />
             <Route path='/login' render={() => <Login />} />
             <Route path="*" render={() => <div>404 NOT FOUND</div>} />
           </Switch>
@@ -54,7 +58,10 @@ class App extends React.Component {
 
 const mapStateToProps = (state) => ({
   initialized: state.appR.initialized,
-  isAuth: state.auth.isAuth
+  isAuth: state.auth.isAuth,
+  userId: state.auth.userId,
+  currentPage: getCurrentPage(state),
+  dialogId: state.messagesPage.currentDialog.id
 })
 
 const AppContainer = compose(

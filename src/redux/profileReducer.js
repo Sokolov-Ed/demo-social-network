@@ -3,15 +3,16 @@ import { newProfilePhoto } from "./authReducer";
 import { stopSubmit } from "redux-form";
 
 const ADD_POST = 'ADD-POST';
+const ADD_LIKE = 'ADD-LIKE';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const SET_STATUS = 'SET_STATUS';
 const DELETE_POST = 'DELETE_POST';
 const SAVE_PHOTO_SUCCESS = 'SAVE_PHOTO_SUCCESS';
 
+let idPost = 0;
+
 let initialState = {
     posts: [
-        { id: 1, message: 'Hi, how are you?', likesCount: 11 },
-        { id: 2, message: `It's hard`, likesCount: 17 }
     ],
     profile: null,
     status: ""
@@ -20,10 +21,15 @@ let initialState = {
 const profileReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST: {
-            let text = action.text;
             let newPost = {
-                id: 3,
-                message: text,
+                id: ++idPost,
+                postOnIdProfile: action.profileId,
+                isMyLike: false,
+                userId: action.userId,
+                userLogin: action.userLogin,
+                userPhoto: action.userPhoto,
+                message: action.text,
+                photoURL: action.url,
                 likesCount: 0
             }
             return {
@@ -34,8 +40,20 @@ const profileReducer = (state = initialState, action) => {
         case DELETE_POST: {
             return {
                 ...state,
-                posts: state.posts.filter(p => p.id != action.postId)
+                posts: state.posts.filter(p => p.id !== action.postId)
             }
+        }
+        case ADD_LIKE: {
+            let postsCopy = {
+                ...state,
+                posts: state.posts.map(p => {
+                    if(p.id === action.postId) {
+                        return Object.assign({}, p, !p.isMyLike ? { likesCount: p.likesCount+1, isMyLike: p.isMyLike=true} : { likesCount: p.likesCount-1, isMyLike: p.isMyLike=false})
+                    }
+                    return p
+                })
+            }
+            return postsCopy;
         }
         case SET_USER_PROFILE: {
             return {
@@ -52,6 +70,7 @@ const profileReducer = (state = initialState, action) => {
         case SAVE_PHOTO_SUCCESS: {
             return {
                 ...state,
+                posts: state.posts.filter(i => i.userPhoto = action.photos.small),
                 profile: { ...state.profile, photos: action.photos }
             }
         }
@@ -60,12 +79,21 @@ const profileReducer = (state = initialState, action) => {
     }
 }
 
-export const addPost = (text) => ({
+export const addPost = (profileId, userId, userLogin, userPhoto, text = "", url = "") => ({
     type: ADD_POST,
-    text
+    profileId,
+    userId,
+    userLogin,
+    userPhoto,
+    text,
+    url
 })
 export const deletePost = (postId) => ({
     type: DELETE_POST,
+    postId
+})
+export const addLike = (postId) => ({
+    type: ADD_LIKE,
     postId
 })
 export const setUserProfile = (profile) => ({
@@ -92,14 +120,9 @@ export const getStatus = (userId) => async (dispatch) => {
 }
 
 export const updateStatus = (status) => async (dispatch) => {
-    try {
-        let response = await profileAPI.updateStatus(status);
-        if (response.data.resultCode === 0) {
-            dispatch(setStatus(status))
-        }
-    }
-    catch (error) {
-        alert("error");
+    let response = await profileAPI.updateStatus(status);
+    if (response.data.resultCode === 0) {
+        dispatch(setStatus(status))
     }
 }
 

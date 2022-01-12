@@ -9,7 +9,7 @@
     margin: 5px 5px 5px 0px;
     padding: 10px;
     border-radius: 10px 10px 10px 0px;
-    background-color: #302c4d;
+    background-color: #353535;
     color: white;
     word-break: break-word;
     word-wrap: break-word;
@@ -17,14 +17,8 @@
 .Arrow {
     width: 0; 
     height: 0;
-    border-bottom: 10px solid #302c4d;
+    border-bottom: 10px solid #353535;
     border-left: 5px solid transparent;
     margin-bottom: 5px;
     margin-left: 5px;
-}
-.avaCompanion{
-    margin: 5px;
-    width: 50px;
-    height: 50px;
-    border-radius: 100%;
 }

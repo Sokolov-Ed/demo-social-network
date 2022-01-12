@@ -1,0 +1,136 @@
+.profileDataField img {
+    width: 30px;
+    margin-right: 10px;
+}
+.imgTitle {
+    position: absolute;
+    display: none;
+    margin-left: 40px;
+    background-color: #555555;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 7.5px;
+}
+.profileDataField img:hover + .imgTitle, .profileDataEdit img:hover + .imgTitle {
+    display: block;
+    z-index: 1;
+}
+.informationShort {
+    display: flex;
+    align-items: flex-start;
+}
+.informationShort img {
+    margin: 2.5px 10px 0 0;
+}
+.listContacts {
+    width: 750px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+.informationUserShort {
+    font-size: 18px;
+    width: 725px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 25px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #3535352c;
+    margin-bottom: 10px;
+    padding-bottom: 15px;
+}
+.descriptionInformation, .contactValue {
+    width: 300px;
+    min-height: 25px;
+    padding: 5px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: inset 0px 1px 1px 2px ghostwhite;
+}
+.descriptionInformation {
+    white-space: pre-line;
+    word-break: break-word;
+    word-wrap: break-word;
+}
+.contactField {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+    margin-right: 25px;
+}
+.contactValue {
+    font-size: 17px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.contactField:hover .contactValue{
+    white-space: pre-line;
+    word-break: break-word;
+    word-wrap: break-word;
+}
+.profileDataField button, .profileDataEdit button {
+    border: none;
+    width: max-content;
+    height: 35px;
+    border-radius: 7.5px;
+    background-color: #353535;
+    color: #fff;
+    font-size: 16px;
+    margin: 5px 10px 5px 5px;
+    padding: 5px 15px;
+}
+.profileDataField button:hover, .profileDataEdit button:hover {
+    background-color: #505050;
+}
+
+.profileDataEdit img {
+    width: 40px;
+    margin-right: 10px;
+}
+.mainInformationEdit {
+    width: 725px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 25px;
+    border-bottom: 1px solid black;
+    margin-bottom: 10px;
+}
+.informationEdit {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.contactField img {
+    width: 30px;
+}
+.contactField input, .inputFullName {
+    outline: none;
+    border: none;
+    width: 300px;
+    height: 25px;
+    font-size: 16px;
+    padding: 5px;
+    max-width: 400px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: inset 0px 1px 1px 2px #b9b9b9;
+}
+.mainInformationEdit .imgTitle {
+    margin-left: 50px;
+}
+.inputFullName {
+    width: 290px;
+}
+.mainInformationEdit textarea {
+    outline: none;
+    resize: none;
+    border: none;
+    width: 290px;
+    height: 70px;
+    font-size: 16px;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: inset 0px 1px 1px 2px #b9b9b9;
+}

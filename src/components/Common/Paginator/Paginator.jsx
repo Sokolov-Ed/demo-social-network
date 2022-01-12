@@ -1,40 +1,42 @@
-import React, { useState } from "react";
+import React from "react";
 import classes from './Paginator.module.css';
-import cn from 'classnames';
-import { useEffect } from "react";
+import ReactPaginate from 'react-paginate';
 
-const Paginator = ({ totalItemsCount, pageSize, onPageGhanged, currentPortion, 
-                    currentPage, setCurrentPortion, portionSize = 10 }) => {
+const Paginator = ({ totalItemsCount, pageSize, onPageGhanged, currentPage }) => {
     let pagesCount = Math.ceil(totalItemsCount / pageSize);
     let pages = [];
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i);
     }
-    let portionCount = Math.ceil(pagesCount / portionSize);
-    let [portionNumber, setPortionNumber] = useState(1);
-    setCurrentPortion(portionNumber);
 
-    useEffect(() => {
-        setPortionNumber(currentPortion);
-    }, []);
-
-    let leftPortionPageNumber = (portionNumber - 1) * portionSize + 1;
-    let rightPortionPageNumber = portionNumber * portionSize;
+    const handlePageClick = (e) => {
+        onPageGhanged(pages[e.selected]);
+    };
+    
     return (
         <div className={classes.content}>
-            {portionNumber > 1 &&
-                <button onClick={() => { setPortionNumber(portionNumber - 1) }}>PREV</button>}
-            {pages
-                .filter(p => p >= leftPortionPageNumber && p <= rightPortionPageNumber)
-                .map((p) => {
-                    return <span className={cn({[classes.selected]: currentPage === p})}
-                        key={p}
-                        onClick={(e) => {
-                            onPageGhanged(p);
-                        }}> {p} </span>
-                })}
-            {portionCount > portionNumber &&
-                <button onClick={() => { setPortionNumber(portionNumber + 1) }}>NEXT</button>}
+            <ReactPaginate
+                nextLabel=">"
+                onPageChange={handlePageClick}
+                pageRangeDisplayed={3}
+                marginPagesDisplayed={2}
+                pageCount={pagesCount}
+                previousLabel="<"
+                pageClassName={classes.pageItem}
+                pageLinkClassName={classes.pageLink}
+                previousClassName={classes.previousPageItem}
+                previousLinkClassName={classes.previousPageLink}
+                nextClassName={classes.nextPageItem}
+                nextLinkClassName={classes.nextPageLink}
+                breakLabel="..."
+                breakClassName={classes.breakPageItem}
+                breakLinkClassName={classes.breakPageLink}
+                containerClassName={classes.pagination}
+                activeClassName={classes.active}
+                disabledClassName={classes.disabled}
+                renderOnZeroPageCount={null}
+                forcePage={currentPage - 1}
+            />
         </div>
     )
 }

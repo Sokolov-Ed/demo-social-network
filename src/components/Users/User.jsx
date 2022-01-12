@@ -3,20 +3,14 @@ import classes from './Users.module.css';
 import DefaultIcon from './../../icons/default_icon_user.png';
 import { NavLink } from 'react-router-dom';
 
-let User = ({ user, followingInProcess, followOrUnfollow }) => {
+let User = ({ user, followingInProcess, followOrUnfollow, addDialog, setCurrentDialog }) => {
     return (
-        <div className={classes.item}>
-            <div>
+        <div>
+            <div className={classes.avaAndFollowField}>
                 <NavLink to={'/profile/' + user.id}>
                     <img src={user.photos.small != null ? user.photos.small : DefaultIcon} className={classes.ava} />
-                </NavLink>
-            </div>
-            <div className={classes.forDataAndButton}>
-                <div className={classes.forData}>
-                    <div>{user.name}</div>
-                    <div>{user.status}</div>
-                </div>
-                <div className={classes.areaForButton}>
+                </NavLink >
+                <div className={classes.buttonsField}>
                     {user.followed
                         ? <button disabled={followingInProcess.some(id => id === user.id)} onClick={() => {
                             followOrUnfollow(user.id, false)
@@ -25,8 +19,19 @@ let User = ({ user, followingInProcess, followOrUnfollow }) => {
                             followOrUnfollow(user.id, true)
                         }} className={classes.forButton}>Follow</button>
                     }
+                    <NavLink to={`/dialogs/${user.id}`}>
+                        <button className={classes.forButton} onClick={() => {addDialog(user); setCurrentDialog(user.id)}}>Message</button>
+                    </NavLink>
                 </div>
             </div>
+            <NavLink to={'/profile/' + user.id}>
+                <div className={classes.item}>
+                    <div className={classes.userData}>
+                        <div className={classes.userName}>{user.name}</div>
+                        {user.status && <div className={classes.userStatus}>{user.status}</div>}
+                    </div>
+                </div>
+            </NavLink >
         </div>
     )
 }

@@ -1,8 +1,29 @@
+.usersField {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 15px;
+    grid-row-gap: 7.5px;
+    padding: 5px;
+    margin-bottom: 5px;
+}
 .item {
-    margin: 10px;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     position: relative;
+    padding: 5px;
+    padding-left: 100px;
+    border-radius: 7.5px;
+    box-shadow: inset 0px 1px 1px 2px ghostwhite;
+    height: 150px;
+}
+.avaAndFollowField {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    z-index: 1;
 }
 .ava {
     display: flex;
@@ -11,24 +32,50 @@
     height: 75px;
     border-radius: 100%;
 }
-.forDataAndButton {
-    height: 75px;
-    margin-left: 10px;
-}
-.forData {
-    font-size: 1.1em;
+.userData {
+    font-size: 18px;
+    padding: 5px;
     position: relative;
     color: black;
     display: flex;
     flex-direction: column;
     align-items: start;
 }
-.areaForButton button{
+.userName, .userStatus {
+    margin: 5px 0;
+    padding: 2.5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.userName {
+    width: 250px;
+    border-bottom: 1px solid #3535352c;
+    text-align: center;
+}
+.userStatus {
+    font-size: 16px;
+    width: 245px;
+    border-radius: 5px;
+    padding: 5px;
+    box-shadow: inset 0px 1px 1px 2px ghostwhite;
+}
+.buttonsField {
+    display: flex;
+    flex-direction: column;
+}
+.buttonsField button{
     width: 75px;
     margin: 5px;
     height: 25px;
     border: none;
     border-radius: 5px;
-    background-color: cadetblue;
-    color: white;
+    background-color: #353535;
+    color: #fff;
+}
+.buttonsField button:hover {
+    background-color: #505050;
+}
+.buttonsField button:disabled {
+    opacity: .5;
 }

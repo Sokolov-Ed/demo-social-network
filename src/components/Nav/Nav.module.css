@@ -1,16 +1,16 @@
 .nav{
-    position: absolute;
+    position: fixed;
     padding: 20px;
-    top: 80px;
+    top: 90px;
     left: -210px;
     background-color:#fff;
     box-shadow: 0px 5px 10px 2px #3535352c;
-    height: 210px;
+    height: 255px;
     width: 200px;
     border-radius: 0px 25px 25px 0px;
     font-size: 1.2em;
     transition: .5s;
-    z-index: 1;
+    z-index: 5;
     display: flex;
     justify-content: center;
     flex-direction: column;

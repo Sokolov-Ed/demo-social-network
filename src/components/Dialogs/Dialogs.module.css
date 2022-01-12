@@ -1,41 +1,39 @@
-.dialogs{
-  display: grid;
-  grid-template-areas:
-  "d m";
-  grid-template-columns: 250px 550px;
-}
-.dialogItems{
+.dialogItems, .dialogItemsClosed{
   grid-area: d;
-  background-color: #302c4d;
-  overflow: auto;
-  padding: 10px;
+  border-radius: 20px 0 0 20px;
+  padding: 2px 0px 0px 17.5px;
   font-size: 1.1em;
-  height: 600px;
+  height: 605px;
   width: 225px;
-  -webkit-transition: border-radius 1s ease;
-  -moz-transition: border-radius 1s ease;
-  -o-transition: border-radius 1s ease;
-  transition: border-radius 1s ease;
+  transition: .5s;
+  overflow: hidden;
+  box-shadow: inset 0px 1px 1px #b9b9b9;
 }
-.openDialogArea {
-  border-radius: 25px 0px 0px 25px;
+.dialogsElementsWrapped {
+  overflow: auto;
+  width: 225px;
+  height: 622.5px;
+  padding: 0;
 }
-.closedDialogArea {
-  border-radius: 25px;
+.dialogItemsClosed {
+  border-radius: 20px;
+  transition: .5s;
 }
-.messagesArea {
+.messagesField {
   grid-area: m;
+  width: 550px;
   border-radius: 0px 25px 25px 0px;
-  position: relative;
-  animation: messagesArea 1s;  
+  transition: 2.5s;
+  margin-left: 0px;
+  box-shadow: inset 0px 1px 1px #b9b9b9;
 }
-@keyframes messagesArea {
- from {
-   opacity: 0;
- }
- to {
-   opacity: 1;
- }
+.messagesFieldClosed {
+  width: 550px;
+  height: 605px;
+  visibility: hidden;
+  opacity: 0;
+  transition: 2.5s;
+  margin-left: 100%;
 }
 .panelUser {
   display: flex;
@@ -43,7 +41,7 @@
   align-items: center;
   padding: 5px;
   border-radius: 0px 25px 0px 0px;
-  background-color: #302c4d;
+  background-color: #353535;
 }
 .iconExit {
   display: flex;
@@ -53,25 +51,30 @@
   border-radius: 10px;
 }
 .iconExit:hover {
-  background-color: steelblue;
+  background-color: #b9b9b9;
 }
 .iconExit img {
   width: 25px;
   height: 25px;
 }
 .PhotoUser {
-  margin-left: 20px;
   width: 50px;
   height: 50px;
   border-radius: 100%;
+  background-color: #fff;
+  margin: -2.5px;
+  margin-left: -7.5px;
+  padding: 2.5px;
 }
 .UserName {
   margin-left: 10px;
   color: white;
   font-size: 1.4em;
-  max-width: 200px;
+  max-width: 350px;
+  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  transform: translateY(-2px);
 }
 .options{
   margin-left: auto;
@@ -89,16 +92,16 @@
   background-color: white;
 }
 .options:hover{
-  background-color:darkorchid;
+  background-color:#b9b9b9;
 }
 .messages{
   grid-area: m;
   position: relative;
   background-color: white;
   overflow: auto;
-  scroll-margin-bottom: 0;
   width: 10fr;
-  height: 505px;
+  height: 490px;
+  margin: 0 1px;
 }
 .addMessage {
   position: relative;
@@ -106,8 +109,26 @@
   padding: 5px;
   border-radius: 0px 0px 25px 0px;
   width: 10fr;
-  background-color: #302c4d;
+  border-top: 1px solid #555555cc;
+  margin: 0 .2px;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.userField {
+  width: 400px;
+  margin-left: 10px;
+  padding: 2.5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 25px 15px 15px 25px;
+}
+.userField:hover {
+  background-color: #fff;
+  transition: .5s;
+}
+.userField:hover .UserName {
+  transition: .5s;
+  color: #353535;
 }

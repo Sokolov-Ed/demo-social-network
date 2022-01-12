@@ -1,5 +1,28 @@
-.areaAddMessage{
+.addMessageField {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+.addMessageField textarea {
+    outline: none;
+    resize: none;
+    border: none;
+    box-shadow: inset 0px 1px 1px 2px #b9b9b9;
+    width: 200px;
+    height: 30px;
+    padding: 5px;
+    border-radius: 5px;
+}
+.addMessageField button {
+    border: none;
+    width: max-content;
+    height: 32.5px;
+    border-radius: 7.5px;
+    background-color: #353535;
+    color: #fff;
+    font-size: 16px;
+    padding: 5px 15px;
+}
+.addMessageField button:hover {
+    background-color: #505050;
 }

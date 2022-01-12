@@ -1,14 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addMyMessage } from '../../../redux/dialogsReducer';
+import { addMyMessage, setUpdateDate } from '../../../redux/dialogsReducer';
 import AddMessage from './AddMessage';
 
-let mapStateToProps = (state) => {
+let mapStateToProps = (state, props) => {
     return {
-        newMessageText: state.messagesPage.messages.newMessageText
+        currentDialogId: props.currentDialogId
     }
 }
 
-const AddMessageContainer = connect(mapStateToProps, {addMyMessage})(AddMessage);
+const AddMessageContainer = connect(mapStateToProps, {addMyMessage, setUpdateDate})(AddMessage);
 
 export default AddMessageContainer;

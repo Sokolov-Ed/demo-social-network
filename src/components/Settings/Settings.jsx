@@ -2,7 +2,9 @@ import classes from './Settings.module.css';
 const Settings = (props) => {
     return(
         <div className="mainContent">
-            Settings
+            <div className='pageIsEmpty'>
+                <div>In developing</div>
+            </div>
         </div>
     )
 }

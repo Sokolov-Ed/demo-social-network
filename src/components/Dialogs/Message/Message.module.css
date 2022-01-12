@@ -1,3 +1,14 @@
 .areaMessages{
     position: relative;
 }
+.messageText {
+    display: flex;
+    flex-direction: column;
+    white-space: pre-line;
+    word-break: break-word;
+    word-wrap: break-word;
+}
+.messageText img {
+    width: 100%;
+    height: calc((512px / 16) * 9);
+}
