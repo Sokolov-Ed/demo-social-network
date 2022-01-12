@@ -12,14 +12,14 @@
   grid-area: c;
   justify-self:center;
 }
-.mainContent, .profilePage, .inProfileNotPosts, .dialogsPage {
+.mainContent, .profilePage, .inProfileNotPosts, .dialogsPage, .dialogsPageClosed {
   width: 800px;
   min-height: 100px;
   height: max-content;
   background-color:#fff;
   box-shadow: 0px 5px 10px 2px #3535352c;
   color: #353535;
-  border-radius: 0px 0px 25px 25px;
+  border-radius: 25px;
   padding: 5px;
   margin: 0 200px 20px 200px;
   transition: 2.5s;
@@ -30,12 +30,17 @@
 .inProfileNotPosts {
   border-radius: 0 0 35%/10%;
 }
-.dialogsPage {
+.dialogsPage, .dialogsPageClosed {
+  border-radius: 25px;
   display: grid;
   grid-template-areas:
   "d m";
   grid-template-columns: 250px 550px;
   overflow: hidden;
+}
+.dialogsPageClosed {
+  margin-left: -250px;
+  width: 242.5px;
 }
 ::-webkit-scrollbar {
   width: 0px;

@@ -12,11 +12,12 @@ const Dialogs = (props) => {
     let currentDialogElement = props.state.currentDialog;
 
     return (
-        <div className='dialogsPage'>
+        <div className={(currentDialogElement.id || props.state.dialogs.length === 0) ? 'dialogsPage' : 'dialogsPageClosed'}>
             {props.state.dialogs.length === 0 ? <div className='pageIsEmpty'>
                     <div>Your dialogs is empty</div>
                 </div>
-                : <><div className={currentDialogElement.id ? classes.dialogItems : classes.dialogItemsClosed}>
+                : <>
+                <div className={currentDialogElement.id ? classes.dialogItems : classes.dialogItemsClosed}>
                     <div className={classes.dialogsElementsWrapped} >
                         {dialogsElements}
                     </div>
