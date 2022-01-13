@@ -1,3 +1,3 @@
 Test account:
-email: free@samuraijs.com
+email: free@samuraijs.com;
 password: free
